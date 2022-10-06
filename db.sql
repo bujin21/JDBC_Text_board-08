@@ -18,3 +18,12 @@ SET regDate = NOW(),
 updateDate = NOW(),
 title = CONCAT("제목",RAND()),
 `body` = CONCAT("내용",RAND());
+
+CREATE TABLE `member` (
+	id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	regDate DATETIME NOT NULL,
+	updateDate DATETIME NOT NULL,
+	loginId CHAR(20) NOT NULL,
+	loginPw CHAR(200) NOT NULL,
+	`name` CHAR(200) NOT NULL
+);
