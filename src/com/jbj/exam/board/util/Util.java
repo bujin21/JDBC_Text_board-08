@@ -1,4 +1,4 @@
-package com.jbj.exam.board;
+package com.jbj.exam.board.util;
 
 import java.util.HashMap;
 import java.util.Map;
