@@ -3,20 +3,7 @@ package com.jbj.exam.board.contoller;
 import com.jbj.exam.board.util.DBUtil;
 import com.jbj.exam.board.util.SecSql;
 
-import java.sql.Connection;
-import java.util.Scanner;
-
-public class MemberController {
-  private Connection conn;
-  private Scanner sc;
-
-  public void setConn(Connection conn) {
-    this.conn = conn;
-  }
-
-  public void setScanner(Scanner sc) {
-    this.sc = sc;
-  }
+public class MemberController extends Controller{
 
   public void join() {
     String loginId;
