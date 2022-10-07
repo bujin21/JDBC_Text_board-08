@@ -2,13 +2,9 @@ package com.jbj.exam.board;
 
 import com.jbj.exam.board.contoller.ArticleController;
 import com.jbj.exam.board.contoller.MemberController;
-import com.jbj.exam.board.util.DBUtil;
-import com.jbj.exam.board.util.SecSql;
+
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class App {
@@ -54,14 +50,9 @@ public class App {
   }
 
   private void action(Rq rq, Connection conn, Scanner sc, String cmd) {
-    ArticleController articleController = new ArticleController();
-    articleController.setConn(conn);
-    articleController.setScanner(sc);
-    articleController.setRq(rq);
 
-    MemberController memberController = new MemberController();
-    memberController.setConn(conn);
-    memberController.setScanner(sc);
+   ArticleController articleController = new ArticleController(conn, sc, rq);
+   MemberController memberController = new MemberController(conn, sc, rq);
 
     if (rq.getUrlPath().equals("/usr/member/join")) {
       memberController.join();
