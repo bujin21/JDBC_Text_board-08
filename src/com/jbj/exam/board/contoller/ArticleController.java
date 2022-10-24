@@ -1,20 +1,18 @@
 package com.jbj.exam.board.contoller;
 
-import com.jbj.exam.board.dto.Article;
+import com.jbj.exam.board.Container;
 import com.jbj.exam.board.Rq;
+import com.jbj.exam.board.dto.Article;
 import com.jbj.exam.board.service.ArticleService;
 
-import java.sql.Connection;
 import java.util.List;
-import java.util.Scanner;
 
 public class ArticleController extends Controller{
 
   private ArticleService articleService;
 
-  public ArticleController(Connection conn, Scanner sc, Rq rq) {
-    super(sc, rq);
-    articleService = new ArticleService(conn);
+  public ArticleController() {
+    articleService = Container.articleService;
   }
 
   public void add(String cmd) {
@@ -47,7 +45,7 @@ public class ArticleController extends Controller{
   }
 
   public void showDetail(Rq rq, String cmd) {
-    int id = this.rq.getIntParam("id", 0);
+    int id = rq.getIntParam("id", 0);
 
     if (id == 0) {
       System.out.println("id를 올바르게 입력해주세요.");
@@ -68,7 +66,7 @@ public class ArticleController extends Controller{
   }
 
   public void delete(Rq rq, String cmd) {
-    int id = this.rq.getIntParam("id", 0);
+    int id = rq.getIntParam("id", 0);
 
     if (id == 0) {
       System.out.println("id를 올바르게 입력해주세요.");
@@ -89,7 +87,7 @@ public class ArticleController extends Controller{
   }
 
   public void modify(Rq rq, String cmd) {
-    int id = this.rq.getIntParam("id", 0);
+    int id = rq.getIntParam("id", 0);
 
     if (id == 0) {
       System.out.println("id를 올바르게 입력해주세요.");

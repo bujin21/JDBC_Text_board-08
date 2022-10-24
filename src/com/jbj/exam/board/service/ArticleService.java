@@ -1,5 +1,6 @@
 package com.jbj.exam.board.service;
 
+import com.jbj.exam.board.Container;
 import com.jbj.exam.board.dto.Article;
 import com.jbj.exam.board.dao.ArticleDao;
 
@@ -9,8 +10,8 @@ import java.util.List;
 public class ArticleService {
   private ArticleDao articleDao;
 
-  public ArticleService(Connection conn) {
-    articleDao = new ArticleDao(conn);
+  public ArticleService() {
+    articleDao = Container.articleDao;
   }
 
   public int add(String title, String body) {

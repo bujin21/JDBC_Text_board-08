@@ -1,5 +1,6 @@
 package com.jbj.exam.board.contoller;
 
+import com.jbj.exam.board.Container;
 import com.jbj.exam.board.Rq;
 import com.jbj.exam.board.service.MemberService;
 import com.jbj.exam.board.dto.Member;
@@ -9,9 +10,8 @@ import java.util.Scanner;
 
 public class MemberController extends Controller {
   private MemberService memberService;
-  public MemberController(Connection conn, Scanner sc, Rq rq) {
-    super(sc, rq);
-    memberService = new MemberService(conn);
+  public MemberController() {
+    memberService = Container.memberService;
   }
   public void join() {
     String loginId;

@@ -9,11 +9,13 @@ import java.util.Scanner;
 
 public class App {
   public void run() {
-    Scanner sc = Container.scanner;
+    Container.scanner = new Scanner(System.in);
+
+    Container.init();
 
     while (true) {
       System.out.printf("명령어) ");
-      String cmd = sc.nextLine().trim();
+      String cmd = Container.scanner.nextLine().trim();
       Rq rq = new Rq(cmd);
 
       // DB 연결시작
@@ -29,7 +31,8 @@ public class App {
       try {
         conn = DriverManager.getConnection(url, "jbjst", "jbj123414");
 
-        action(rq, conn, sc, cmd);
+        Container.conn = conn;
+        action(rq, cmd);
 
       } catch (SQLException e) {
         System.err.println("예외 : DB에 연결할 수 없습니다..");
@@ -46,17 +49,16 @@ public class App {
       }
       // DB 연결 끝
     }
-    sc.close();
+    Container.scanner.close();
   }
 
-  private void action(Rq rq, Connection conn, Scanner sc, String cmd) {
-
-    ArticleController articleController = new ArticleController(conn, sc, rq);
-    MemberController memberController = new MemberController(conn, sc, rq);
+  private void action(Rq rq, String cmd) {
+    ArticleController articleController = new ArticleController();
+    MemberController memberController = new MemberController();
 
     if (rq.getUrlPath().equals("/usr/member/join")) {
       memberController.join();
-    } else if (rq.getUrlPath().equals("/usr/article/login")) {
+    } else if (rq.getUrlPath().equals("/usr/member/login")) {
       memberController.login();
     }else if (rq.getUrlPath().equals("/usr/article/write")) {
       articleController.add(cmd);
