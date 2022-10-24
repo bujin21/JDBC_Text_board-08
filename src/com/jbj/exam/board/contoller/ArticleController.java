@@ -1,22 +1,18 @@
 package com.jbj.exam.board.contoller;
 
-import com.jbj.exam.board.Article;
+import com.jbj.exam.board.dto.Article;
 import com.jbj.exam.board.Rq;
 import com.jbj.exam.board.service.ArticleService;
-import com.jbj.exam.board.util.DBUtil;
-import com.jbj.exam.board.util.SecSql;
 
 import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class ArticleController extends Controller{
 
   private ArticleService articleService;
 
-  public ArticleController(Connection conn, Scanner sc, Rq rq){
+  public ArticleController(Connection conn, Scanner sc, Rq rq) {
     super(sc, rq);
     articleService = new ArticleService(conn);
   }

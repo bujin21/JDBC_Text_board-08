@@ -1,5 +1,7 @@
 package com.jbj.exam.board;
 
+import com.jbj.exam.board.dto.Article;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

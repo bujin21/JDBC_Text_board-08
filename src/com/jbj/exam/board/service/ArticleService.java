@@ -1,6 +1,6 @@
 package com.jbj.exam.board.service;
 
-import com.jbj.exam.board.Article;
+import com.jbj.exam.board.dto.Article;
 import com.jbj.exam.board.dao.ArticleDao;
 
 import java.sql.Connection;

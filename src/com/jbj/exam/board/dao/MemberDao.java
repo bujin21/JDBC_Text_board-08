@@ -4,7 +4,9 @@ package com.jbj.exam.board.dao;
 import com.jbj.exam.board.util.DBUtil;
 import com.jbj.exam.board.util.SecSql;
 
+import com.jbj.exam.board.dto.Member;
 import java.sql.Connection;
+import java.util.Map;
 
 public class MemberDao {
   private Connection conn;
@@ -35,5 +37,21 @@ public class MemberDao {
     int id = DBUtil.insert(conn, sql);
 
     return id;
+  }
+
+  public Member getMemberByLoginId(String loginId) {
+    SecSql sql = new SecSql();
+
+    sql.append("SELECT *");
+    sql.append("FROM member");
+    sql.append("WHERE loginId = ?", loginId);
+
+    Map<String, Object> memberMap = DBUtil.selectRow(conn, sql);
+
+    if(memberMap.isEmpty()){
+      return null;
+    }
+
+    return new Member(memberMap);
   }
 }

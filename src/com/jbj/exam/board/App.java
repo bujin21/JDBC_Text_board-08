@@ -51,12 +51,14 @@ public class App {
 
   private void action(Rq rq, Connection conn, Scanner sc, String cmd) {
 
-   ArticleController articleController = new ArticleController(conn, sc, rq);
-   MemberController memberController = new MemberController(conn, sc, rq);
+    ArticleController articleController = new ArticleController(conn, sc, rq);
+    MemberController memberController = new MemberController(conn, sc, rq);
 
     if (rq.getUrlPath().equals("/usr/member/join")) {
       memberController.join();
-    } else if (rq.getUrlPath().equals("/usr/article/write")) {
+    } else if (rq.getUrlPath().equals("/usr/article/login")) {
+      memberController.login();
+    }else if (rq.getUrlPath().equals("/usr/article/write")) {
       articleController.add(cmd);
     } else if (rq.getUrlPath().equals("/usr/article/list")) {
       articleController.showList(cmd);

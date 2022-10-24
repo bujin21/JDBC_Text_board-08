@@ -1,4 +1,4 @@
-package com.jbj.exam.board;
+package com.jbj.exam.board.dto;
 
 import java.util.Map;
 

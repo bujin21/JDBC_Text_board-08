@@ -29,5 +29,6 @@ public class Util {
   public static String getUrlPathFromUrl(String url) {
     return url.split("\\?", 2)[0];
   }
+
 }
 
