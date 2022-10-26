@@ -3,6 +3,7 @@ package com.jbj.exam.board.service;
 import com.jbj.exam.board.Container;
 import com.jbj.exam.board.dto.Article;
 import com.jbj.exam.board.dao.ArticleDao;
+import com.jbj.exam.board.util.SecSql;
 
 import java.util.List;
 
@@ -35,5 +36,9 @@ public class ArticleService {
 
   public List<Article> getArticles() {
     return articleDao.getArticles();
+  }
+
+  public void increaseHit(int id) {
+    articleDao.increaseHit(id);
   }
 }
