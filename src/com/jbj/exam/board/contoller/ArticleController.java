@@ -90,6 +90,18 @@ public class ArticleController extends Controller{
       return;
     }
 
+    Article article = articleService.getArticleById(id);
+
+    if (article == null){
+      System.out.printf("%d번 게시물은 존재하지 않습니다.", id );
+      return;
+    }
+
+    if (article.memberId != Container.session.loginedMemberId){
+      System.out.println("권한이 없습니다.");
+      return;
+    }
+
     System.out.println("== 게시글 삭제 ==");
     boolean articleExists = articleService.articleExists(id);
 
@@ -113,6 +125,18 @@ public class ArticleController extends Controller{
 
     if (id == 0) {
       System.out.println("id를 올바르게 입력해주세요.");
+      return;
+    }
+
+    Article article = articleService.getArticleById(id);
+
+    if (article == null) {
+      System.out.printf("%d번 게시물은 존재하지 않습니다.\n", id);
+      return;
+    }
+
+    if (article.memberId != Container.session.loginedMemberId) {
+      System.out.println("권한이 없습니다.");
       return;
     }
 
