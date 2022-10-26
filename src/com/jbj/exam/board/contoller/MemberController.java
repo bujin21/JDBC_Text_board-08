@@ -40,8 +40,11 @@ public class MemberController extends Controller {
       loginPw = sc.nextLine().trim();
       if (loginPw.length() == 0) {
         System.out.println("로그인 비번을 입력해주세요.");
+        continue;
       }
+
       boolean loginPwConfirmSame = true;
+
       while (true) {
         System.out.printf("로그인 비번확인 : ");
         loginPwConfirm = sc.nextLine().trim();
