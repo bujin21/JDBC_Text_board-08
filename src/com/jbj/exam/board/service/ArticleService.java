@@ -4,7 +4,6 @@ import com.jbj.exam.board.Container;
 import com.jbj.exam.board.dto.Article;
 import com.jbj.exam.board.dao.ArticleDao;
 
-import java.sql.Connection;
 import java.util.List;
 
 public class ArticleService {
@@ -14,8 +13,8 @@ public class ArticleService {
     articleDao = Container.articleDao;
   }
 
-  public int add(String title, String body) {
-    return articleDao.add(title, body);
+  public int add(int memberId, String title, String body) {
+    return articleDao.add(memberId,title, body);
   }
 
   public boolean articleExists(int id) {
